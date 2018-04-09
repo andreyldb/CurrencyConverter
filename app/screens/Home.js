@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-impimport { StatusBar } from 'react-native';
- 
+import { StatusBar } from 'react-native';
+
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
 import { InputWithButton } from '../components/TextInput';
- import { ClearButton } from '../components/Button';
+import { ClearButton } from '../components/Button';
 import { LastConverted } from '../components/Text';
 import { Header } from '../components/Header';
 
 const TEMP_BASE_CURRENCY = 'USD';
 const TEMP_QUOTE_CURRENCY = 'GBP';
 const TEMP_BASE_PRICE = '100';
-const TEMP_QUOTE_PRICE = '80.00';
+const TEMP_QUOTE_PRICE = '79.74';
 const TEMP_LAST_CONVERTED = new Date();
 const TEMP_CONVERSION_RATE = 0.79739;
 
@@ -28,9 +28,6 @@ class Home extends Component {
     console.log('press quote currency');
   };
 
-  handleSwapCurrency = () => {
-    console.log('handle swap currency');
-  };
   handle = () => {
     console.log('clear button pressed');
   };
@@ -43,7 +40,8 @@ class Home extends Component {
     return (
       <Container>
         <StatusBar backgroundColor="blue" barStyle="light-content" />
-	<Header onPress={this.handleOptionsPress} />
+        <Header onPress={this.handleOptionsPress} />
+	<KeyboardAvoidingView behavior="position">
         <Logo />
         <InputWithButton
           buttonText={TEMP_BASE_CURRENCY}
@@ -64,7 +62,8 @@ class Home extends Component {
           quote={TEMP_QUOTE_CURRENCY}
           conversionRate={TEMP_CONVERSION_RATE}
         />
-<ClearButton text="clear" onPress={this.handle} />
+        <ClearButton text="clear" onPress={this.handle} />
+	</KeyboardAvoidingView>
       </Container>
     );
   }
