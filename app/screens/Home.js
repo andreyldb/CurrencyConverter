@@ -1,73 +1,72 @@
-import React, { Component } from 'react';
-import { StatusBar } from 'react-native';
+import React, {Component} from 'react';
+import {StatusBar, KeyboardAvoidingView} from 'react-native';
 
-import { Container } from '../components/Container';
-import { Logo } from '../components/Logo';
-import { InputWithButton } from '../components/TextInput';
-import { ClearButton } from '../components/Button';
-import { LastConverted } from '../components/Text';
-import { Header } from '../components/Header';
+import {Container} from '../components/Container';
+import {Logo} from '../components/Logo';
+import {InputWithButton} from '../components/TextInput';
+import {ClearButton} from '../components/Button';
+import {LastConverted} from '../components/Text';
+import {Header} from '../components/Header';
 
 const TEMP_BASE_CURRENCY = 'USD';
 const TEMP_QUOTE_CURRENCY = 'GBP';
 const TEMP_BASE_PRICE = '100';
 const TEMP_QUOTE_PRICE = '79.74';
-const TEMP_LAST_CONVERTED = new Date();
+const TEMP_LAST_CONVERTED = new Date ();
 const TEMP_CONVERSION_RATE = 0.79739;
 
 class Home extends Component {
   handleChangeText = () => {
-    console.log('change text');
+    console.log ('change text');
   };
 
   handlePressBaseCurrency = () => {
-    console.log('press base currency');
+    console.log ('press base currency');
   };
 
   handlePressQuoteCurrency = () => {
-    console.log('press quote currency');
+    console.log ('press quote currency');
   };
 
   handle = () => {
-    console.log('clear button pressed');
+    console.log ('clear button pressed');
   };
 
   handleOptionsPress = () => {
-    console.log('options press');
+    console.log ('options press');
   };
 
-  render() {
+  render () {
     return (
       <Container>
         <StatusBar backgroundColor="blue" barStyle="light-content" />
         <Header onPress={this.handleOptionsPress} />
-	<KeyboardAvoidingView behavior="position">
-        <Logo />
-        <InputWithButton
-          buttonText={TEMP_BASE_CURRENCY}
-          onPress={this.handlePressBaseCurrency}
-          defaultValue={TEMP_BASE_PRICE}
-          keyboardType="numeric"
-          onChangeText={this.handleChangeText}
-        />
-        <InputWithButton
-          editable={false}
-          buttonText={TEMP_QUOTE_CURRENCY}
-          onPress={this.handlePressQuoteCurrency}
-          value={TEMP_QUOTE_PRICE}
-        />
-        <LastConverted
-          date={TEMP_LAST_CONVERTED}
-          base={TEMP_BASE_CURRENCY}
-          quote={TEMP_QUOTE_CURRENCY}
-          conversionRate={TEMP_CONVERSION_RATE}
-        />
-        <ClearButton text="clear" onPress={this.handle} />
-	</KeyboardAvoidingView>
+        <KeyboardAvoidingView behavior="position">
+          <Logo />
+          <InputWithButton
+            buttonText={TEMP_BASE_CURRENCY}
+            onPress={this.handlePressBaseCurrency}
+            defaultValue={TEMP_BASE_PRICE}
+            keyboardType="numeric"
+            onChangeText={this.handleChangeText}
+          />
+          <InputWithButton
+            editable={false}
+            buttonText={TEMP_QUOTE_CURRENCY}
+            onPress={this.handlePressQuoteCurrency}
+            value={TEMP_QUOTE_PRICE}
+          />
+          <LastConverted
+            date={TEMP_LAST_CONVERTED}
+            base={TEMP_BASE_CURRENCY}
+            quote={TEMP_QUOTE_CURRENCY}
+            conversionRate={TEMP_CONVERSION_RATE}
+          />
+          <ClearButton text="clear" onPress={this.handle} />
+        </KeyboardAvoidingView>
       </Container>
     );
   }
 }
 
 export default Home;
-
